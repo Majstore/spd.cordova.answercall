@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin 
+  xmlns="http://apache.org/cordova/ns/plugins/1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  id="spd.codrova.answercall"
+  version="0.0.1">
+  
+  <description>Answer call from Cordova Application</description>
+
+  <name>Answer phone</name>
+  <author>Dejan Beciric</author>
+  
+  <license>Apache 2.0</license>
+  <keywords>cordova,call,answer,phonegap</keywords>
+  <js-module src="www/AnswerPhone.js" name="AnswerPhone">
+    <clobbers target="call"/>
+  </js-module>
+
+  <platform name="android">
+      <config-file target="res/xml/config.xml" parent="/*">
+          <feature name="AnswerCall">
+              <param name="android-package" value="spd.codova.answercall.SPDAnswerPhone"/>
+          </feature>
+      </config-file>
+      <config-file target="AndroidManifest.xml" parent="/*">
+          <uses-permission android:name="android.permission.CALL_PHONE" />
+          <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
+      </config-file>
+      <source-file src="src/android/SPDAnswerPhone.java" target-dir="src/com/phonegap/plugins/speech" />
+  </platform>
+</plugin>
